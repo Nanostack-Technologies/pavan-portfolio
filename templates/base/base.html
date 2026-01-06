@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{% block title %}Pavan Mehta — Django Developer{% endblock %}</title>
+
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="Pavan Mehta — Django Developer Portfolio">
+    <meta name="description" content="Portfolio of Pavan Mehta — Django Developer specializing in Web Apps, REST APIs, Dashboards, Automations, and full-stack development. Modern and responsive projects built with Django, Python, React, and Bootstrap.">
+
+    <meta name="keywords" content="Pavan Mehta, Django Developer, Python Developer, Web Developer, Full Stack Developer, Portfolio, API Developer, Automation Developer, Indian Developer">
+    <meta name="author" content="Pavan Mehta">
+
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pavan Mehta — Django Developer Portfolio">
+    <meta property="og:description" content="Explore projects, skills, and services by Django Developer Pavan Mehta. Fast, scalable, and modern web development.">
+    <meta property="og:image" content="{% static 'images/favicons/android-chrome-512x512.png' %}">
+    <meta property="og:url" content="https://your-domain.com">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Pavan Mehta — Django Developer Portfolio">
+    <meta property="twitter:description" content="Explore Django, Python, and full-stack development projects by Pavan Mehta.">
+    <meta property="twitter:image" content="{% static 'images/favicons/android-chrome-512x512.png' %}">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'images/favicons/site.webmanifest' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicons/favicon.ico' %}" />
+    <meta name="theme-color" content="#b46aff">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Global CSS -->
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: #0d0d0d !important;
+        }
+        .navbar-brand {
+            color: #b46aff !important;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .nav-link {
+            color: #e3e3e3 !important;
+            margin-right: 20px;
+            font-size: 1rem;
+        }
+        .nav-link.active,
+        .nav-link:hover {
+            color: #b46aff !important;
+            text-decoration: underline;
+        }
+
+        /* Buttons */
+        .btn-purple {
+            background-color: #b46aff;
+            color: #fff;
+            border-radius: 10px;
+            padding: 12px 28px;
+            font-weight: 600;
+        }
+        .btn-outline-purple {
+            border: 2px solid #b46aff;
+            color: #b46aff;
+            border-radius: 10px;
+            padding: 12px 28px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d0d;
+            padding: 20px 0;
+            color: #999;
+            text-align: center;
+        }
+
+        /* Navbar Toggler */
+        .navbar-toggler {
+            border-color: #b46aff !important;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg 
+                viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e
+                %3cpath stroke='rgba(180,106,255,0.9)' stroke-width='3'
+                stroke-linecap='round' stroke-miterlimit='10'
+                d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+    </style>
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="/">Pavan.dev</a>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link {% if 'projects' in request.path %}active{% endif %}" href="/projects/">Projects</a></li>
+        <li class="nav-item"><a class="nav-link {% if 'experience' in request.path %}active{% endif %}" href="/experience/">Experience</a></li>
+        <li class="nav-item"><a class="nav-link {% if 'about' in request.path %}active{% endif %}" href="/about/">About</a></li>
+        <li class="nav-item"><a class="nav-link {% if 'contact' in request.path %}active{% endif %}" href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+{% block content %}{% endblock %}
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; {{ now.year }} Pavan Mehta — Crafted with Django</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 900,   // smooth animation
+    once: true       // animate only once
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

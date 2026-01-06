@@ -1,0 +1,122 @@
+{% extends "base/base.html" %}
+{% block title %}{{ project.title }} — Project Details{% endblock %}
+
+{% block content %}
+
+<style>
+    a
+    {
+        text-decoration: none;
+    }
+    .btn-purple {
+    background: #b46aff;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-purple:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0px 0px 18px rgba(180, 106, 255, 0.6);
+}
+
+/* Animated Shine Effect */
+.btn-purple::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    transition: 0.4s;
+}
+
+.btn-purple:hover::after {
+    left: 100%;
+}
+
+
+/* Outline Button */
+.btn-outline-purple {
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 2px solid #b46aff;
+    color: #b46aff;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-purple:hover {
+    transform: translateY(-3px) scale(1.03);
+    background: #b46aff;
+    color: white !important;
+    box-shadow: 0px 0px 18px rgba(180, 106, 255, 0.6);
+}
+
+/* Inner glow animation */
+.btn-outline-purple::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    padding: 2px;
+    background: linear-gradient(45deg, #b46aff, transparent, #8f41ea);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.btn-outline-purple:hover::before {
+    opacity: 1;
+}
+</style>
+
+<div class="container py-5">
+
+    <!-- Project Title -->
+    <h1 class="fw-bold">{{ project.title }}</h1>
+
+    <!-- Short description -->
+    <p class="text-white-50 fs-5" style="max-width: 700px;">
+        {{ project.short_description }}
+    </p>
+
+    <!-- Project Image -->
+    <div class="mt-4">
+        <img src="{{ project.image.url }}" alt="{{ project.title }}" 
+             class="img-fluid rounded shadow" 
+             style="max-height: 450px; object-fit: cover; width: 100%;">
+    </div>
+
+    <!-- Buttons -->
+    <div class="mt-4 d-flex gap-3">
+        {% if project.demo_url %}
+        <a href="{{ project.demo_url }}" target="_blank" class="btn-purple">🔗 Live Demo</a>
+        {% endif %}
+
+        {% if project.github_url %}
+        <a href="{{ project.github_url }}" target="_blank" class="btn-outline-purple">💻 GitHub Repo</a>
+        {% endif %}
+    </div>
+
+    <!-- Full Description -->
+    <h3 class="fw-bold mt-5" style="color:#b46aff;">Overview</h3>
+
+    <p class="text-white-50 fs-6" style="line-height: 1.7;">
+        {{ project.description|linebreaks }}
+    </p>
+
+</div>
+
+{% endblock %}

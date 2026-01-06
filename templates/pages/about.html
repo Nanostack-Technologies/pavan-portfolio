@@ -1,0 +1,59 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}About — Pavan.dev{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- ABOUT SECTION -->
+    <h2 class="fw-bold" data-aos="fade-up">About Me</h2>
+
+    <p class="mt-3 text-white-50" style="font-size: 1.1rem; line-height:1.7;" data-aos="fade-up" data-aos-delay="100">
+        I am a Django Developer passionate about modern web development.
+        I enjoy building backend systems, APIs, dashboards, automation tools,
+        and creating digital experiences that are fast, clean, and scalable.
+    </p>
+
+    <!-- SKILLS SECTION -->
+    <h3 class="mt-5 fw-bold" style="color:#b46aff;" data-aos="fade-up">Skills</h3>
+
+    <div class="mt-4">
+
+        {% for skill in skills %}
+        <div class="mb-3" data-aos="fade-right" data-aos-delay="{{ forloop.counter0 }}00">
+            <label class="text-white-50">{{ skill.name }}</label>
+
+            <div class="progress" style="height: 10px; border-radius:10px;">
+                <div class="progress-bar"
+                     style="width: {{ skill.proficiency }}%; background-color:#b46aff; border-radius:10px;">
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-white-50">No skills added yet.</p>
+        {% endfor %}
+
+    </div>
+
+    <!-- SERVICES SECTION -->
+    <h3 class="mt-5 fw-bold" style="color:#b46aff;" data-aos="fade-up">What I Do</h3>
+
+    <div class="row mt-4 g-4">
+
+        {% for s in services %}
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0 }}00">
+            <div style="background:#0f1624; padding:25px; border-radius:15px; border:1px solid rgba(255,255,255,0.05);">
+                <h5 class="fw-bold text-white">{{ s.title }}</h5>
+                <p class="text-white-50 mt-2">{{ s.description }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-white-50">No services available.</p>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

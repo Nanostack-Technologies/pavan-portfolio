@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+{% block title %}Projects — Pavan.dev{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+  <!-- Page Title -->
+  <h2 class="fw-bold mb-4" data-aos="fade-right">Projects</h2>
+
+  <div class="row">
+    {% for project in projects %}
+    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0 }}00">
+      <div class="card bg-dark border-0 shadow-sm" style="border-radius:12px;">
+        
+        <!-- Project Image -->
+        <img src="{{ project.image.url }}" class="card-img-top" style="border-radius:12px 12px 0 0;">
+        
+        <div class="card-body">
+          <h5 class="text-white">{{ project.title }}</h5>
+          <p class="text-white-50">{{ project.short_description|truncatechars:120 }}</p>
+
+          <a href="/projects/{{ project.slug }}/" 
+             class="text-decoration-none fw-semibold"
+             style="color:#b46aff;">
+             View Project →
+          </a>
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

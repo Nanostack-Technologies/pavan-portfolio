@@ -1,0 +1,48 @@
+{% extends 'custom_admin/base.html' %}
+
+{% block title %}Services | Admin{% endblock %}
+{% block header %}Services{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center bg-white">
+                <h6 class="m-0 fw-bold text-primary">All Services</h6>
+                <a href="{% url 'custom_admin:service_create' %}" class="btn btn-custom btn-sm"><i class="fas fa-plus me-1"></i> Add Service</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Title</th>
+                                <th style="width: 50%;">Description</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for service in services %}
+                            <tr>
+                                <td class="fw-bold">{{ service.title }}</td>
+                                <td>{{ service.description|truncatewords:20 }}</td>
+                                <td class="text-end">
+                                    <a href="{% url 'custom_admin:service_update' service.pk %}" class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'custom_admin:service_delete' service.pk %}" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="3" class="text-center text-muted py-5">
+                                    <p>No services added yet.</p>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

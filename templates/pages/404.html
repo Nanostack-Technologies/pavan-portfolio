@@ -1,0 +1,106 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Page Not Found — Pavan.dev{% endblock %}
+
+{% block extra_css %}
+<style>
+  .error-404 {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .error-card {
+    background: #0b0b0e;
+    border: 1px solid rgba(180,106,255,0.08);
+    padding: 48px;
+    border-radius: 18px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  }
+
+  .error-code {
+    font-size: 6rem;
+    font-weight: 800;
+    color: #b46aff;
+    line-height: 1;
+  }
+
+  .error-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .error-desc {
+    color: #cfcfd6;
+    margin-top: 10px;
+  }
+
+  .ghost-illustration {
+    max-width: 220px;
+    opacity: 0.95;
+  }
+
+  .error-actions .btn {
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .error-code { font-size: 4.2rem; text-align:center; }
+    .error-card { padding: 28px; }
+    .ghost-illustration { max-width: 160px; margin: 0 auto 18px; display: block; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="error-404">
+  <div class="error-card" data-aos="zoom-in">
+
+    <div class="row align-items-center gy-4">
+
+      <div class="col-md-6 text-center text-md-start">
+        <div class="error-code" data-aos="fade-right" data-aos-delay="100">404</div>
+      </div>
+
+      <div class="col-md-6">
+        <div data-aos="fade-left" data-aos-delay="200">
+          <h3 class="error-title">Page not found</h3>
+          <p class="error-desc">
+            Oops — the page you're looking for doesn't exist or has been moved.
+            Maybe the URL is wrong, or the page was removed.
+          </p>
+
+          <p class="text-white-50 small">
+            You can return to the homepage or get in touch so I can help you find what you need.
+          </p>
+
+          <div class="d-flex gap-3 mt-3 error-actions">
+            <a href="/" class="btn-purple">Go to Home</a>
+            <a href="/contact/" class="btn-outline-purple">Contact</a>
+            <a href="https://wa.me/919979412610?text=Hi%20Pavan,%20I%20found%20a%20404%20on%20your%20site" 
+               class="btn btn-outline-light" target="_blank" style="border-radius:10px;">
+              WhatsApp
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12 text-center">
+        <!-- optional illustrative image; replace with your own or remove -->
+        <img src="{% static "images/error.png" %}" alt="Not found" class="ghost-illustration" data-aos="fade-up" data-aos-delay="300">
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

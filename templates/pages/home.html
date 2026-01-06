@@ -1,0 +1,390 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Home — Pavan.dev{% endblock %}
+
+{% block extra_css %}
+<style>
+
+    .main a
+    {
+        text-decoration: none;
+    }
+
+    .tech-card {
+        background: #0f1624;
+        padding: 25px 20px;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .tech-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0px 0px 25px rgba(180, 106, 255, 0.4);
+    }
+    .tech-card img {
+        height: 55px;
+        margin-bottom: 12px;
+    }
+    .tech-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    .btn-purple {
+    background: #b46aff;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-purple:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0px 0px 18px rgba(180, 106, 255, 0.6);
+}
+
+/* Animated Shine Effect */
+.btn-purple::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    transition: 0.4s;
+}
+
+.btn-purple:hover::after {
+    left: 100%;
+}
+
+
+/* Outline Button */
+.btn-outline-purple {
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 2px solid #b46aff;
+    color: #b46aff;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-purple:hover {
+    transform: translateY(-3px) scale(1.03);
+    background: #b46aff;
+    color: white !important;
+    box-shadow: 0px 0px 18px rgba(180, 106, 255, 0.6);
+}
+
+/* Inner glow animation */
+.btn-outline-purple::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    padding: 2px;
+    background: linear-gradient(45deg, #b46aff, transparent, #8f41ea);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.btn-outline-purple:hover::before {
+    opacity: 1;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5 main">
+  <div class="row align-items-center" style="min-height: 80vh;">
+
+    <!-- LEFT SIDE -->
+    <div class="col-md-6" data-aos="fade-right">
+
+      <h1 class="fw-bold display-4" data-aos="fade-up" data-aos-delay="100">
+        Hi, I’m <span style="color:#b46aff;">Pavan Mehta</span>
+      </h1>
+
+      <h3 class="mt-3" style="color: #ccc;" data-aos="fade-up" data-aos-delay="200">
+        Django Developer
+      </h3>
+
+      <p class="mt-4 text-white-50" style="font-size: 1.1rem; line-height: 1.7;"
+         data-aos="fade-up" data-aos-delay="300">
+        I build scalable web apps using Django, React, and modern tech.
+        Passionate about solving problems and crafting digital experiences.
+      </p>
+
+      <div class="mt-4 d-flex gap-3" data-aos="fade-up" data-aos-delay="400">
+        <a href="/projects/" class="btn-purple">View My Work</a>
+        <a href="/contact/" class="btn-outline-purple">Contact Me</a>
+        {% if resume %}
+        <a href="{{ resume.file.url }}" class="btn-outline-purple" download>
+            Resume <i class="fas fa-download ms-1"></i>
+        </a>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="col-md-6 text-center" data-aos="fade-left" data-aos-delay="200">
+      <img src="{% static 'images/python-original.svg' %}" width="350" />
+    </div>
+
+  </div>
+
+  <!-- ===================== TECH STACK SECTION ===================== -->
+  <div class="container py-5 mt-5" id="tech-stack">
+
+    <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Tech Stack</h2>
+
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
+        <div class="tech-card">
+          <img src="{% static 'images/html.png' %}" />
+          <div class="tech-title" style="color:#ff7f2a;">HTML/CSS</div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+        <div class="tech-card">
+          <img src="{% static 'images/js.png' %}" />
+          <div class="tech-title" style="color:#f7df1e;">JavaScript</div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
+        <div class="tech-card">
+          <img src="{% static 'images/bootstrap.png' %}" />
+          <div class="tech-title" style="color:#bf5af2;">Bootstrap</div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
+        <div class="tech-card">
+          <img src="{% static 'images/tailwind.png' %}" />
+          <div class="tech-title" style="color:#38bdf8;">Tailwind CSS</div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="500">
+        <div class="tech-card">
+          <img src="{% static 'images/python-original.svg' %}" />
+          <div class="tech-title" style="color:#f7df1e;">Python</div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="600">
+        <div class="tech-card">
+          <img src="{% static 'images/django.png' %}" class="bg-white rounded p-2" />
+          <div class="tech-title" style="color:#00ff99;">Django</div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="700">
+        <div class="tech-card">
+          <img src="{% static 'images/react.png' %}" />
+          <div class="tech-title" style="color:#61dafb;">React</div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="800">
+        <div class="tech-card">
+          <img src="{% static 'images/sql.png' %}" />
+          <div class="tech-title" style="color:#00c2ff;">SQL</div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="900">
+        <div class="tech-card">
+          <img src="{% static 'images/mongo.png' %}" />
+          <div class="tech-title" style="color:#34d399;">MongoDB</div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="1000">
+        <div class="tech-card">
+          <img src="{% static 'images/git.png' %}" />
+          <div class="tech-title" style="color:#ff5722;">Git</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- ===================== END TECH STACK ===================== -->
+
+  <!-- ===================== PROJECTS SECTION ===================== -->
+<div class="container py-5 mt-5">
+
+    <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Latest Projects</h2>
+
+    <div class="row g-4">
+
+        {% for p in projects %}
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+            <div class="card bg-dark text-white border-0 shadow-sm" style="border-radius:15px;">
+                <img src="{{ p.image.url }}" class="card-img-top" style="border-radius:15px 15px 0 0;">
+
+                <div class="card-body">
+                    <h5 class="fw-bold">{{ p.title }}</h5>
+                    <p class="text-white-50">{{ p.short_description|truncatechars:100 }}</p>
+
+                    <a href="{% url 'project_detail' p.slug %}" class="btn btn-sm" 
+                       style="background:#b46aff; color:white; border-radius:10px;">
+                        View Details →
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="/projects/" class="btn-outline-purple">View All Projects</a>
+    </div>
+
+</div>
+<!-- ===================== END PROJECTS ===================== -->
+
+<!-- ===================== HIGHLIGHTS SECTION ===================== -->
+<div class="container-fluid py-5" style="background:#0f1624;">
+    <div class="container">
+
+        <h2 class="text-center fw-bold text-white mb-5" data-aos="fade-up">Highlights</h2>
+
+        <div class="row justify-content-center g-4">
+
+            <!-- Item 1 -->
+            <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
+                <div class="tech-card text-center" style="padding:40px 20px;">
+                    <h2 style="color:#b46aff;">2+</h2>
+                    <p class="text-white-50">Years Experience</p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+                <div class="tech-card text-center" style="padding:40px 20px;">
+                    <h2 style="color:#b46aff;">15+</h2>
+                    <p class="text-white-50">Projects Completed</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
+                <div class="tech-card text-center" style="padding:40px 20px;">
+                    <h2 style="color:#b46aff;">5+</h2>
+                    <p class="text-white-50">Happy Clients</p>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
+                <div class="tech-card text-center" style="padding:40px 20px;">
+                    <h2 style="color:#b46aff;">10+</h2>
+                    <p class="text-white-50">Technologies Used</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- ===================== END HIGHLIGHTS ===================== -->
+
+<!-- ===================== TESTIMONIALS SECTION ===================== -->
+<div class="container py-5 mt-5">
+
+    <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Testimonials</h2>
+
+    <div id="testimonialSlider" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <div class="text-center p-4" style="color:white;">
+                    <p class="fs-5 text-white-50">
+                        “Pavan delivered our project on time with excellent quality. Highly recommended!”
+                    </p>
+                    <h5 class="fw-bold mt-3" style="color:#b46aff;">— Client One</h5>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="text-center p-4" style="color:white;">
+                    <p class="fs-5 text-white-50">
+                        “Amazing Django developer! Communication and execution were top-notch.”
+                    </p>
+                    <h5 class="fw-bold mt-3" style="color:#b46aff;">— Client Two</h5>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="text-center p-4" style="color:white;">
+                    <p class="fs-5 text-white-50">
+                        “Great problem-solving skills and modern UI/UX approach.”
+                    </p>
+                    <h5 class="fw-bold mt-3" style="color:#b46aff;">— Client Three</h5>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ===================== END TESTIMONIALS ===================== -->
+
+
+<!-- ===================== CTA SECTION ===================== -->
+<div class="container py-5 mt-5 text-center">
+
+    <div class="p-5" style="background:#0f1624; border-radius:20px;" data-aos="zoom-in">
+
+        <h2 class="fw-bold text-white">Let's Work Together</h2>
+        <p class="text-white-50 mt-2">
+            Have a project in mind? Let's build something amazing.
+        </p>
+
+        <div class="mt-4 d-flex justify-content-center gap-3">
+
+            <!-- Contact Page Button -->
+            <a href="/contact/" class="btn-purple" style="padding:12px 28px;">
+                Contact Me
+            </a>
+
+            <!-- WhatsApp Button -->
+            <a href="https://wa.me/919979412610?text=Hi%20Pavan,%20I%20want%20to%20work%20with%20you!" 
+               class="btn-outline-purple"
+               style="padding:12px 28px;" 
+               target="_blank">
+                WhatsApp Me
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ===================== END CTA ===================== -->
+
+
+</div>
+
+{% endblock %}

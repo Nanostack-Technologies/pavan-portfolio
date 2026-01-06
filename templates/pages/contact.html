@@ -1,0 +1,85 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Contact — Pavan.dev{% endblock %}
+
+{% block extra_css %}
+<style>
+    .btn-purple {
+    background: #b46aff;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-purple:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0px 0px 18px rgba(180, 106, 255, 0.6);
+}
+
+/* Animated Shine Effect */
+.btn-purple::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    transition: 0.4s;
+}
+
+.btn-purple:hover::after {
+    left: 100%;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5" style="max-width:700px;">
+
+    <h2 class="fw-bold mb-4" data-aos="fade-up">Contact Me</h2>
+
+    <!-- SUCCESS MESSAGE -->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" data-aos="fade-down">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" data-aos="fade-up" data-aos-delay="100">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control bg-dark text-white border-secondary" name="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control bg-dark text-white border-secondary" name="email" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Subject</label>
+            <input type="text" class="form-control bg-dark text-white border-secondary" name="subject" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea rows="5" class="form-control bg-dark text-white border-secondary" name="message" required></textarea>
+        </div>
+
+        <button class="btn-purple mt-3">Send Message</button>
+
+    </form>
+
+</div>
+
+{% endblock %}
