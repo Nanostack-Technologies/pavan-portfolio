@@ -1,7 +1,8 @@
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.static import serve
 
 handler404 = 'core.views.custom_404'
 
@@ -9,6 +10,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('custom-admin/', include('custom_admin.urls')),
     path('', include('core.urls')),
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]
 
 if settings.DEBUG:
